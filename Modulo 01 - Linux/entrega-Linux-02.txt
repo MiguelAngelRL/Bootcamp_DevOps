@@ -1,0 +1,7 @@
+# Partimos del estado que tenemos tras seguir los pasos para resolver el ejercicio 01
+
+# Copiamos el contenido de fichero1 en fichero2, redireccionando salido del comando cat
+cat file1.txt > file2.txt
+
+# Movemos el fichero2 de carpeta
+mv file2.txt ../empty
