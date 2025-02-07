@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    environment {
+        PROJECT = 'Test'
+    }
+
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello world'
+                echo 'This is the build number ${BUILD_NUMBER}'
             }
         }
     }
