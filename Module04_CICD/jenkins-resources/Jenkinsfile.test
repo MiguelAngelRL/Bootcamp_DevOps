@@ -1,10 +1,23 @@
 pipeline {
     agent any
-
+    environment {
+        RELEASE='0.0.1'
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent any //We can choose any other agent for a particular stage
+            environment {
+                LOG_LEVEL='INFO'
+            }
             steps {
-                echo 'Hello world'
+                echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+                printenv
+                sh 'printenv'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing. I can see release ${RELEASE}, but not log level ${LOG_LEVEL}"
             }
         }
     }
