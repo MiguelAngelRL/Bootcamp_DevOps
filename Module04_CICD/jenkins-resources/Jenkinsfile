@@ -2,6 +2,18 @@ pipeline {
     agent any
 
     stages {
+        stage('Change permissions') {
+            steps {
+                dir('./Module04_CICD/jenkins-resources/calculator'){
+                    sh '''
+                        ls -l gradlew
+                        chmod 755 gradlew
+                        ls -l gradlew
+                    '''
+                }
+            }
+        }
+
         stage('Java Compile') {
             steps {
                 dir('./Module04_CICD/jenkins-resources/calculator'){
