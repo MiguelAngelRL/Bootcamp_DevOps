@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Java Compile') {
             steps {
-                dir(./calculator){
+                dir('./calculator'){
                     sh 'gradlew compileJava'
                 }
             }
@@ -12,7 +12,7 @@ pipeline {
 
         stage('Java Unit Tests') {
             steps {
-                dir(./calculator){
+                dir('./calculator'){
                     sh 'gradlew test'
                 }
             }
