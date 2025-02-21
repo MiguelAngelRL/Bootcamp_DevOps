@@ -4,16 +4,16 @@ pipeline {
     stages {
         stage('Java Compile') {
             steps {
-                dir('./calculator'){
-                    sh './gradlew compileJava'
+                dir('./jenkins-resources/calculator'){
+                    sh 'gradlew compileJava'
                 }
             }
         }
 
         stage('Java Unit Tests') {
             steps {
-                dir('./calculator'){
-                    sh './gradlew test'
+                dir('./jenkins-resources/calculator'){
+                    sh 'gradlew test'
                 }
             }
         }
