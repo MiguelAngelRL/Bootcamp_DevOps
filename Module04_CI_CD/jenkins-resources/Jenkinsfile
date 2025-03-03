@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Change gradlew permissions') {
             steps {
-                dir('./Module04_CICD/jenkins-resources/calculator'){
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
                     sh '''
                         chmod 755 gradlew
                         ls -l gradlew
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Java Compile') {
             steps {
-                dir('./Module04_CICD/jenkins-resources/calculator'){
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
                     sh './gradlew compileJava'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Java Unit Tests') {
             steps {
-                dir('./Module04_CICD/jenkins-resources/calculator'){
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
                     sh './gradlew test'
                 }
             }
