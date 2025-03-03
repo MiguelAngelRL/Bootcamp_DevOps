@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Java Compile') {
+            steps {
+                dir('./Module04_CICD/jenkins-resources/calculator'){
+                    sh './gradlew compileJava'
+                }
+            }
+        }
+
+        stage('Java Unit Tests') {
+            steps {
+                dir('./Module04_CICD/jenkins-resources/calculator'){
+                    sh './gradlew test'
+                }
+            }
+        }
+    }
+}
