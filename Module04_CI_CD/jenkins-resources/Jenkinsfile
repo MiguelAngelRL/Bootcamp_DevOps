@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Change gradlew permissions') {
+            steps {
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
+                    sh '''
+                        chmod 755 gradlew
+                        ls -l gradlew
+                    '''
+                }
+            }
+        }
+
+        stage('Java Compile') {
+            steps {
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
+                    sh './gradlew compileJava'
+                }
+            }
+        }
+
+        stage('Java Unit Tests') {
+            steps {
+                dir('./Module04_CI_CD/jenkins-resources/calculator'){
+                    sh './gradlew test'
+                }
+            }
+        }
+    }
+}
