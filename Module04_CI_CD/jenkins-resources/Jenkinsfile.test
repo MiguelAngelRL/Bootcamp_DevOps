@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment {
+        RELEASE='0.0.1'
+        LOG_LEVEL='INFO'
+    }
+    stages {
+        stage('Build') {
+            agent any //We can choose any other agent for a particular stage
+            steps {
+                echo "This is the build number ${BUILD_NUMBER}"
+                echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+                sh 'printenv'
+            }
+        }
+        stage('Test') {
+            environment {
+                LOG_LEVEL='ERROR'
+            }
+            steps {
+                echo "Testing release ${RELEASE} with log level ${LOG_LEVEL}"
+            }
+        }
+    }
+}
