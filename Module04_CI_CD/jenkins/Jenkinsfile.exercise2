@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Java Compile') {
             steps {
-                dir('./Module04_CI_CD/jenkins-resources/calculator'){
+                dir('./Module04_CI_CD/jenkins/calculator'){
                     sh './gradlew compileJava'
                 }
             }
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Java Unit Tests') {
             steps {
-                dir('./Module04_CI_CD/jenkins-resources/calculator'){
+                dir('./Module04_CI_CD/jenkins/calculator'){
                     sh './gradlew test'
                 }
             }
