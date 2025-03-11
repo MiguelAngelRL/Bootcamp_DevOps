@@ -28,3 +28,6 @@ RUN mkdir -p /usr/share/gradle /usr/share/gradle/ref \
 ENV GRADLE_VERSION 6.6.1
 ENV GRADLE_HOME /usr/bin/gradle
 ENV PATH $PATH:$GRADLE_HOME/bin
+
+USER jenkins
+
