@@ -22,7 +22,7 @@
 * Once configured the pipeline, run it by clicking on __Build Now__ from the item dashboard.
 * Inspect the [build console log](./Exercise1_Build_Console_Output%20.txt) to check that everything has been executed as expected.
 
-### 2. Java project CI/CD using the docker in docker as agent
+### 2. Java project CI/CD using docker in docker as agent
 
 * Use this [Dockerfile](./dockercli.Dockerfile) to create the image __jenkins-bootcamp-gradle__ with docker cli installed by running the following command:
 
