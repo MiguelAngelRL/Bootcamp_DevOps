@@ -1,0 +1,119 @@
+Started by user admin
+
+Obtained Module04_CI_CD/jenkins/Jenkinsfile.exercise2 from git https://github.com/MiguelAngelRL/Bootcamp_DevOps.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/Bootcamp
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential miguelangelrl
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Bootcamp/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/MiguelAngelRL/Bootcamp_DevOps.git # timeout=10
+Fetching upstream changes from https://github.com/MiguelAngelRL/Bootcamp_DevOps.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials Github bootcamp
+ > git fetch --tags --force --progress -- https://github.com/MiguelAngelRL/Bootcamp_DevOps.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision f978e7fece707f12d2620cb1c9b10f372251d65d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f978e7fece707f12d2620cb1c9b10f372251d65d # timeout=10
+Commit message: "change gradlew permissions"
+ > git rev-list --no-walk 21d71705a9e41c9924253276f678ed23a28eb71f # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . gradle:6.6.1-jre14-openj9
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container c378ade100913e25239be3a471b4bd55ce0d783f8a04500ce689b64267db077e
+but /var/jenkins_home/workspace/Bootcamp could not be found among []
+but /var/jenkins_home/workspace/Bootcamp@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/Bootcamp -v /var/jenkins_home/workspace/Bootcamp:/var/jenkins_home/workspace/Bootcamp:rw,z -v /var/jenkins_home/workspace/Bootcamp@tmp:/var/jenkins_home/workspace/Bootcamp@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** gradle:6.6.1-jre14-openj9 cat
+$ docker top eb9af02aa1a7a98db5afab7cbebd5fb6e6fc2034e089d5552242033842b2a2f1 -eo pid,comm
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Change gradlew permissions)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ chmod 755 gradlew
++ ls -l gradlew
+-rwxr-xr-x 1 gradle gradle 5766 Mar 12 17:03 gradlew
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Java Compile)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ ./gradlew compileJava
+Downloading https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
+.........10%..........20%..........30%..........40%.........50%..........60%..........70%..........80%..........90%.........100%
+
+Welcome to Gradle 6.6.1!
+
+Here are the highlights of this release:
+ - Experimental build configuration caching
+ - Built-in conventions for handling credentials
+ - Java compilation supports --release flag
+
+For more details see https://docs.gradle.org/6.6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava UP-TO-DATE
+
+BUILD SUCCESSFUL in 48s
+1 actionable task: 1 up-to-date
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Java Unit Tests)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ ./gradlew test
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test UP-TO-DATE
+
+BUILD SUCCESSFUL in 12s
+4 actionable tasks: 4 up-to-date
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+$ docker stop --time=1 eb9af02aa1a7a98db5afab7cbebd5fb6e6fc2034e089d5552242033842b2a2f1
+$ docker rm -f --volumes eb9af02aa1a7a98db5afab7cbebd5fb6e6fc2034e089d5552242033842b2a2f1
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

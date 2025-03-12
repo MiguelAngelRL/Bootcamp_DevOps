@@ -1,0 +1,88 @@
+Started by user admin
+
+Obtained Module04_CI_CD/jenkins/Jenkinsfile.exercise1 from git https://github.com/MiguelAngelRL/Bootcamp_DevOps.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/Bootcamp
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential miguelangelrl
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Bootcamp/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/MiguelAngelRL/Bootcamp_DevOps.git # timeout=10
+Fetching upstream changes from https://github.com/MiguelAngelRL/Bootcamp_DevOps.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials Github
+ > git fetch --tags --force --progress -- https://github.com/MiguelAngelRL/Bootcamp_DevOps.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3001ad19ac2b525cea54ada30445fcc675aa9227 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3001ad19ac2b525cea54ada30445fcc675aa9227 # timeout=10
+Commit message: "update paths"
+ > git rev-list --no-walk 3001ad19ac2b525cea54ada30445fcc675aa9227 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Change gradlew permissions)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ chmod 755 gradlew
++ ls -l gradlew
+-rwxr-xr-x 1 jenkins jenkins 5766 Mar 11 19:31 gradlew
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Java Compile)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ ./gradlew compileJava
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava UP-TO-DATE
+
+BUILD SUCCESSFUL in 16s
+1 actionable task: 1 up-to-date
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Java Unit Tests)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/Bootcamp/Module04_CI_CD/jenkins/calculator
+[Pipeline] {
+[Pipeline] sh
++ ./gradlew test
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test UP-TO-DATE
+
+BUILD SUCCESSFUL in 3s
+4 actionable tasks: 4 up-to-date
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
