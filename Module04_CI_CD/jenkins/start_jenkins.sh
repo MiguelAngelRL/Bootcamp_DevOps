@@ -40,4 +40,4 @@ docker container run --name jenkins-dockercli --rm --detach \
 # Ensure that script have permissions to be executed: chmod +x start_jenkins.sh
 # Build image from Dockerfile: docker build -t jenkins-bootcamp-dockercli .
 # From previous image we can run custom Jenkins version as follows:
-# ./start_jenkins.sh jenkins-bootcamp-dockercli jenkins-bootcamp jenkins-bootcamp-docker-certs jenkins-bootcamp-data
+# ./start_jenkins.sh jenkins-bootcamp-dockercli jenkins-bootcamp jenkins-docker-certs jenkins-dockercli-data

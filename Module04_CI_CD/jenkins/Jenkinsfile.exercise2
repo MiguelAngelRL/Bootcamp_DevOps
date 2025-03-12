@@ -6,6 +6,17 @@ pipeline {
     }
 
     stages {
+        stage('Change gradlew permissions') {
+            steps {
+                dir('./Module04_CI_CD/jenkins/calculator'){
+                    sh '''
+                        chmod 755 gradlew
+                        ls -l gradlew
+                    '''
+                }
+            }
+        }
+        
         stage('Java Compile') {
             steps {
                 dir('./Module04_CI_CD/jenkins/calculator'){
