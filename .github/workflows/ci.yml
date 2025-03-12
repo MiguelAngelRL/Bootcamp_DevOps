@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches: [main]
-    paths: ["github_actions/hangman-front/**"]
+    paths: ["Module04_CI_CD/github_actions/hangman-front/**"]
 
 jobs:
   build:
