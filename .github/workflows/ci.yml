@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
       - name: Build
-        working-directory: ./github_actions/hangman-front
+        working-directory: ./Module04_CI_CD/github_actions/hangman-front
         run: |
           npm ci
           npm run build --if-present
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 16
       - name: test
-        working-directory: ./github_actions/hangman-front
+        working-directory: ./Module04_CI_CD/github_actions/hangman-front
         run: |
           npm ci
           npm test
