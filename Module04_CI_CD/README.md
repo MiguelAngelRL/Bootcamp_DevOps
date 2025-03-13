@@ -45,3 +45,41 @@
   * Script Path -> _Module04_CI_CD/jenkins/Jenkinsfile.exercise2_
 * Once configured the pipeline, run it by clicking on __Build Now__ from the item dashboard.
 * Inspect the [build console log](./Exercise2_Build_Console_Output%20.txt) to check that everything has been executed as expected.
+
+
+## GitHub Actions
+
+### 1. Triggered CI workflow for the hangman-front project to run both the Build and Unit Tests
+
+* This branch [github_actions_1](https://github.com/MiguelAngelRL/Bootcamp_DevOps/tree/github_actions_1) is where the PR has been open.
+* This is the [ci.yml](../.github/workflows/ci.yml) used to run the workflow when a change is done into the folder "hangman-front" and a PR is open.
+* The executions of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/ci.yml]. The first execution failed because there was an error in the unit tests. Once fixed the test, the second time the workflow ended correctly.
+
+### 2. Manual CD workflow for the hangman-front project to both create a Docker image and publish it in the github container registry
+
+* This is the [cd.yml](../.github/workflows/cd.yml) used to run the workflow when a change is done into the folder "hangman-front" and a PR is open.
+* The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/cd.yml]. The first one failed because ghcr.io was missing in the tag name. The second one failed because the github user should be in lowercase. The third one went well after fixing the previous errors.
+* Once finished, a container was created by running the following command: `docker run -d -p 8081:8080 ghcr.io/miguelangelrl/hangman-front-actions-2024:latest`
+* Here is the terminal log that shows how the image is pulled from ghcr.io:
+  ```
+  latest: Pulling from miguelangelrl/hangman-front-actions-2024
+  cbdbe7a5bc2a: Pull complete 
+  10c113fb0c77: Pull complete 
+  9ba64393807b: Pull complete 
+  262f9908119d: Pull complete 
+  c4a057508f96: Pull complete 
+  13bf34ad7973: Pull complete 
+  4f4fb700ef54: Pull complete 
+  79a59300ef6e: Pull complete 
+  08bb610f128d: Pull complete 
+  6d0144882f9d: Pull complete 
+  Digest: sha256:f033d768f46f35646e3a0f71376a7b1dbe31d19a5aedf3286cfd35b8375b4e1e
+  Status: Downloaded newer image for ghcr.io/miguelangelrl/hangman-front-actions-2024:latest
+  bc5cddad930a8a1d0075ae7af1931bebdcb75243b5a11950c13678154262e46d
+  ```
+* This is what we got on the browser:
+
+  ![](./cd.jpg)
+
+
+
