@@ -49,5 +49,8 @@ jobs:
         with:
           context: ./Module04_CI_CD/github_actions/hangman-front
           push: true
-          tags: ${{ github.actor }}/hangman-api-actions-2024:latest
+          tags: ${{ github.actor }}/hangman-front-actions-2024:latest
           file: ./Module04_CI_CD/github_actions/hangman-front/Dockerfile.workflow
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
