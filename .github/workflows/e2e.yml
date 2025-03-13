@@ -28,6 +28,7 @@ jobs:
         uses: actions/checkout@v4
       - name: e2e tests
         uses: cypress-io/github-action@v6
+        working-directory: ./Module04_CI_CD/github_actions/hangman-e2e
         with:
           project: ./Module04_CI_CD/github_actions/hangman-e2e
 
