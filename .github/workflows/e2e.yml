@@ -4,8 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
+  infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+      - name: Front
+        working-directory: ./Module04_CI_CD/github_actions/hangman-front
+        run: |
+          docker build -t hangman-front .
+          docker run -d -p 8080:8080 -e API_URL=http://localhost:3001 hangman-front
+      - name: Api
+        working-directory: ./Module04_CI_CD/github_actions/hangman-api
+        run: |
+          docker build -t hangman-api .
+          docker run -d -p 3001:3000 hangman-api
   cypress:
     runs-on: ubuntu-latest
+    needs: infrastructure
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -13,5 +33,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./Module04_CI_CD/github_actions/hangman-e2e/e2e
-
  
