@@ -59,7 +59,7 @@
 
 * This is the [cd.yml](../.github/workflows/cd.yml) used to run the workflow when a change is done into the folder "hangman-front" and a PR is open.
 * The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/cd.yml]. The first one failed because ghcr.io was missing in the tag name. The second one failed because the github user should be in lowercase. The third one went well after fixing the previous errors.
-* Once finished, a container was created by running the following command: `docker run -d -p 8081:8080 ghcr.io/miguelangelrl/hangman-front-actions-2024:latest`
+* Once finished, to check that the image was correctly generated and uploaded, a container was created in our local machine by running the following command: `docker run -d -p 8081:8080 ghcr.io/miguelangelrl/hangman-front-actions-2024:latest`
 * Here is the terminal log that shows how the image is pulled from ghcr.io:
   ```
   latest: Pulling from miguelangelrl/hangman-front-actions-2024
@@ -81,5 +81,7 @@
 
   ![](./cd.jpg)
 
-
+### Workflow to perform e2e tests
+* This is the [e2e.yml](../.github/workflows/e2e.yml) used to run the manual workflow.
+* The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/e2e.yml]. Some executions failed due to different problems, like not setting the correct working dir or not having the api and app servers up and running. Once everything was fixed, the workflow ran successfully.
 
