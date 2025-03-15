@@ -81,7 +81,7 @@
 
   ![](./cd.jpg)
 
-### Workflow to perform e2e tests
+### 3. Workflow to perform e2e tests
 * This is the [e2e.yml](../.github/workflows/e2e.yml) used to run the manual workflow.
 * The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/e2e.yml]. Some executions failed due to different problems, like not setting the correct working dir or not having the api and app servers up and running. Once everything was fixed, the workflow ran successfully.
 
