@@ -1,0 +1,17 @@
+name: CUSTOM-WORKFLOW
+
+on:
+  issues: 
+    types: labeled
+
+jobs:
+  custom-action:
+    if: ${{ github.event.label.name == 'motivate' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get random quote
+      id: random_quote
+      uses: miguelangelrl/get-motivational-quote@v1.0.0
+    - name: Print random quote
+      run: echo "Your motivational quote is -> ${{steps.random_quote.outputs.quote}}"
