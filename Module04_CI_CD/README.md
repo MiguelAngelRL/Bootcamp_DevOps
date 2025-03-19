@@ -53,12 +53,12 @@
 
 * This branch [github_actions_1](https://github.com/MiguelAngelRL/Bootcamp_DevOps/tree/github_actions_1) is where the PR has been open.
 * This is the [ci.yml](../.github/workflows/ci.yml) used to run the workflow when a change is done into the folder "hangman-front" and a PR is open.
-* The executions of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/ci.yml]. The first execution failed because there was an error in the unit tests. Once fixed the test, the second time the workflow ended correctly.
+* The executions of the actions can be found [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/ci.yml). The first execution failed because there was an error in the unit tests. Once fixed the test, the second time the workflow ended correctly.
 
 ### 2. Manual CD workflow for the hangman-front project to both create a Docker image and publish it in the github container registry
 
 * This is the [cd.yml](../.github/workflows/cd.yml) used to run the workflow when a change is done into the folder "hangman-front" and a PR is open.
-* The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/cd.yml]. The first one failed because ghcr.io was missing in the tag name. The second one failed because the github user should be in lowercase. The third one went well after fixing the previous errors.
+* The execution of the actions can be found [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/cd.yml). The first one failed because ghcr.io was missing in the tag name. The second one failed because the github user should be in lowercase. The third one went well after fixing the previous errors.
 * Once finished, to check that the image was correctly generated and uploaded, a container was created in our local machine by running the following command: `docker run -d -p 8081:8080 ghcr.io/miguelangelrl/hangman-front-actions-2024:latest`
 * Here is the terminal log that shows how the image is pulled from ghcr.io:
   ```
@@ -83,5 +83,10 @@
 
 ### 3. Workflow to perform e2e tests
 * This is the [e2e.yml](../.github/workflows/e2e.yml) used to run the manual workflow.
-* The execution of the actions can be found here [https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/e2e.yml]. Some executions failed due to different problems, like not setting the correct working dir or not having the api and app servers up and running. Once everything was fixed, the workflow ran successfully.
+* The execution of the actions can be found [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/e2e.yml). Some executions failed due to different problems, like not setting the correct working dir or not having the api and app servers up and running. Once everything was fixed, the workflow ran successfully.
 
+### 4. Custom Javascript Action
+* This is the [custom.yml](../.github/workflows/custom.yml) used to run the workflow when an issue is labelled as "motivate".
+* This is the [custom action repository](https://github.com/MiguelAngelRL/get-motivational-quote).
+* We have created an [issue](https://github.com/MiguelAngelRL/Bootcamp_DevOps/issues) labelled with "motivate" to run the workflow.
+* The execution of the workflow is [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/custom.yml)
