@@ -89,4 +89,4 @@
 * This is the [custom.yml](../.github/workflows/custom.yml) used to run the workflow when an issue is labelled as "motivate".
 * This is the [custom action repository](https://github.com/MiguelAngelRL/get-motivational-quote).
 * We have created an [issue](https://github.com/MiguelAngelRL/Bootcamp_DevOps/issues) labelled with "motivate" to run the workflow.
-* The execution of the workflow is [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/custom.yml)
+* The execution of the workflow is [here](https://github.com/MiguelAngelRL/Bootcamp_DevOps/actions/workflows/custom.yml).
