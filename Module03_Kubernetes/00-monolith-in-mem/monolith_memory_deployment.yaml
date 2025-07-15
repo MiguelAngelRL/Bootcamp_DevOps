@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-app-pod
+  template:
+    metadata:
+      labels:
+        app: todo-app-pod
+    spec:
+      containers:
+      - name: todo-app-container
+        image: lemoncodersbc/lc-todo-monolith:v5-2024
+        env:
+          - name: ENV
+            value: development
+          - name: PORT
+            value: '8080'
