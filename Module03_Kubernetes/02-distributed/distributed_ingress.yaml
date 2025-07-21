@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-app-ingress
+  labels:
+    name: todo-app-ingress
+spec:
+  rules:
+  - host: 127-0-0-1.nip.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: todo-front-service
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/api"
+        backend:
+          service:
+            name: todo-api-service
+            port: 
+              number: 80

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-api-pod
+  template:
+    metadata:
+      labels:
+        app: todo-api-pod
+    spec:
+      containers:
+      - name: todo-api-container
+        image: lemoncodersbc/lc-todo-api:v5-2024
+        envFrom:
+          - configMapRef:
+              name: todo-api-cm

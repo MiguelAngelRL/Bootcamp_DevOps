@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-front-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-front-pod
+  template:
+    metadata:
+      labels:
+        app: todo-front-pod
+    spec:
+      containers:
+      - name: todo-front-container
+        image: lemoncodersbc/lc-todo-front:v5-2024
