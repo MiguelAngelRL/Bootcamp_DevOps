@@ -16,6 +16,7 @@ When everything is up and running, we could access to the app from the cluster u
 &emsp;![cluster access](./00-monolith-in-mem/cluster_access.jpg)
 
 <br/>
+
 To access to the app from our browser, we have to run the _minikube tunnel_ command to reach the loadbalancer service from outside the cluster:<br/><br/>
 
 &emsp;![minikube tunnel](./00-monolith-in-mem/minikube_tunnel.jpg)
@@ -64,6 +65,7 @@ We can check that we can reach the application from the cluster using both the p
 &emsp;![cluster access](./01-monolith-and-db/cluster_access.jpg)
 
 <br/>
+
 To access from outside the cluster we need to run _minikube tunnel_ to expose the loadbalancer service:<br/><br/>
 
 &emsp;![minikube tunnel](./01-monolith-and-db/minikube_tunnel.jpg)
@@ -96,6 +98,7 @@ For that, the following resources have been deployed in the cluster:
 * A __Deployment__ using the monolith image _lemoncodersbc/lc-todo-api:v5-2024_, by applying the file [distributed_api_deployment.yaml](./02-distributed/distributed_api_deployment.yaml). The pods will be deployed with the label _todo-front-pod_ and will accept petitions to its 3001 port, as has been defined in the _todo-api-cm_ configmap.
 
 <br/>
+
 When everything is up and running, we could access the api and the frontend pods from the cluster and from the browser. To expose the ingress resource we need to run the _minikube tunnel_ command:<br/><br/>
 
 &emsp;![distributed console access](./02-distributed/distributed_console_access.jpg)<br/>
