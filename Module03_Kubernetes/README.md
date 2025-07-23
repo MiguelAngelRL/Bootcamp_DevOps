@@ -47,7 +47,7 @@ For that, the following resources have been deployed in the cluster:
 * A __StorageClass__, __PersistentVolume__ and __PersistentVolumeClaim__ by applying the file [monolith_persistence.yaml](./01-monolith-and-db/monolith_persistence.yaml). The pv and pvc objects have been created only because the assesstment asked to do so, although actually those two objects __will not be used__ by our infrastructure. That pv will be used by pods that use the pvc in their spec. The StorageClass is called _persistence-sc_ and will be used in the Persistent Volume Template that will be specified in the StatefulSet.
 
 * A __StatefulSet__ using the DB server image _lemoncodersbc/lc-todo-monolith-psql:v5-2024_, by applying the file [monolith_statefulset.yaml](./01-monolith-and-db/monolith_statefulset.yaml). The pods will be deployed with the label _persistence-pod_ and will accept petitions to its 5432 port. The parameters needed to run the server are supplied by the _db-cm_ configmap. Also will use the defined _persistence-sc_ storageclass in the volume claim template that will use to claim a volumen to persist the data.
-__
+
 * A __ConfigMap__ called _db-cm_ to define the environtment variables that will use the application pods, by applying the file [monolith_db_cm.yaml](./01-monolith-and-db/monolith_db_cm.yaml). Here we can find the authentication data to run the DB server.
 
 <br/>
